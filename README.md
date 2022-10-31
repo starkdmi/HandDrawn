@@ -1,5 +1,5 @@
 # HandDrawn
-  Native Grapic Editor for Telegram Contest 
+Native Grapic Editor for Telegram iOS Contest 2022
   
 ## Preview
 |  Drawing (Image)  |  Text (Video)  | 
