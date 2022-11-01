@@ -64,13 +64,13 @@ struct EditorView: View {
     
     /// Available fill colors
     let fillColors: [UIColor] = [
-        .white, UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0), .systemYellow, .systemGreen, .systemBlue, .systemPurple, .systemPink, .systemRed, .systemOrange,
+        .white, UIColor.dark, .systemYellow, .systemGreen, .systemBlue, .systemPurple, .systemPink, .systemRed, .systemOrange,
     ]
     
     /// Text colors coming with pair to display different colors on different backgrounds - white on black atd.
     let textColors: [UIColor: UIColor] = [ // fill:text
-        .white: UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0),
-        UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1.0): .white,
+        .white: UIColor.dark,
+        UIColor.dark: .white,
         .systemYellow: .white,
         .systemGreen: .white,
         .systemBlue: .white,
@@ -112,13 +112,15 @@ struct EditorView: View {
         self.media = media
         self.onClose = onClose
         
-        // wheel picker view background color which in sum with blur will return rgb 56,56,56
-        UIPickerView.appearance().backgroundColor = UIColor(red: 42/255, green: 42/255, blue: 40/255, alpha: 1.0)
+        // wheel picker view background color which in sum with blur will return rgb 35,34,35
+        UIPickerView.appearance().backgroundColor = UIColor(red: 17/255, green: 16/255, blue: 14/255, alpha: 1.0)
         
         // segmented picker style
         let appearance = UISegmentedControl.appearance()
         appearance.setTitleTextAttributes([.foregroundColor: UIColor.dark], for: .selected)
         appearance.setTitleTextAttributes([.foregroundColor: UIColor.light], for: .normal)
+        UISegmentedControl.appearance().backgroundColor = UIColor(red: 21/255, green: 21/255, blue: 17/255, alpha: 1.0) // visible as 44,44,44
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
     }
     
     var body: some View {
@@ -144,9 +146,6 @@ struct EditorView: View {
                             .labelsHidden()
                             .frame(width: UIScreen.main.bounds.width, height: 56).clipped()
                             .frame(width: 128, height: 32).clipped()
-                            .onAppear {
-                                UIPickerView.appearance().backgroundColor = UIColor(red: 42/255, green: 42/255, blue: 40/255, alpha: 1.0)
-                            }
                             .stateChange(value: font, onChange: onFontChanged)
                         }
                     }
@@ -178,8 +177,8 @@ struct EditorView: View {
                             Text("Clear All")
                                 .frame(height: 36)
                                 .padding(.horizontal, 12)
-                                .foregroundColor(canUndo ? .white: .gray)
-                                .background(canUndo ? Color(red: 64/255, green: 64/255, blue: 64/255) : Color(red: 44/255, green: 44/255, blue: 44/255))
+                                .foregroundColor(canUndo ? .light: .gray)
+                                .background(canUndo ? Color.darkHighlight : Color(red: 44/255, green: 44/255, blue: 44/255))
                                 .clipShape(Rectangle())
                                 .cornerRadius(36)
                                 .padding(.all, 4)
@@ -307,7 +306,7 @@ struct EditorView: View {
                                 .padding(.all, 4)
                                 .overlay(
                                     ActivityIndicator(isAnimating: isProcesing).configure {
-                                        $0.color = .white
+                                        $0.color = .light
                                     }
                                 )
                         }.disabled(!canUndo)
@@ -320,7 +319,7 @@ struct EditorView: View {
                     HStack {
                         if (mode == .draw) {
                             // Spacer()
-                            isDismissAlertPresented ? AnyView(Color.dark) : AnyView(Color.white
+                            isDismissAlertPresented ? AnyView(Color.dark) : AnyView(Color(red: 29/255, green: 28/255, blue: 30/255)
                                 .onTapGesture {
                                     activateCanvas()
                                 })
@@ -885,8 +884,8 @@ struct EditorView: View {
     }
 }
 
-/*struct EditorView_Previews: PreviewProvider {
+struct EditorView_Previews: PreviewProvider {
     static var previews: some View {
         EditorView(media: MediaItem(type: .image, image: UIImage(named: "venice"), video: nil, videoUrl: nil), onClose: { })
     }
-}*/
+}

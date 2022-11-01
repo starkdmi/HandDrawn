@@ -50,7 +50,7 @@ struct PermissionsView: View {
                     
                     Text("Access Your Photos and Videos")
                         .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
+                        .foregroundColor(.light)
                         .padding(.bottom, 8)
                     
                     Button(action: {
@@ -78,7 +78,7 @@ struct PermissionsView: View {
                                 Text(self.status == true ? "Continue" : "Grant Permissions")
                             } else {
                                 ActivityIndicator(isAnimating: isPickerPresented).configure {
-                                    $0.color = .white
+                                    $0.color = .light
                                 }
                             }
                         }
@@ -88,7 +88,7 @@ struct PermissionsView: View {
                         .padding()
                         .background(self.status == false ? Color.gray : Color.blue)
                         .cornerRadius(8)
-                        .foregroundColor(.white)
+                        .foregroundColor(.light)
                     })
                     .disabled(self.status == false)
                     .sheet(isPresented: $isPickerPresented) { // small delay on first load - but fullScreenCover has different style (and iOS 14+)
