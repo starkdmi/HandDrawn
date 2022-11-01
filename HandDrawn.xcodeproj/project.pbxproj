@@ -26,7 +26,6 @@
 		1D58CC7128F3F50D0013E250 /* HandDrawnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D58CC7028F3F50D0013E250 /* HandDrawnApp.swift */; };
 		1D58CC7528F3F50E0013E250 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC7428F3F50E0013E250 /* Assets.xcassets */; };
 		1D58CC7828F3F50E0013E250 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC7728F3F50E0013E250 /* Preview Assets.xcassets */; };
-		1D58CC8728F82CF00013E250 /* ShapesClassification.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1D58CC8628F82CF00013E250 /* ShapesClassification.mlpackage */; };
 		1D58CC8F28F97B5D0013E250 /* circle.pkdrawing in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC8B28F97B5D0013E250 /* circle.pkdrawing */; };
 		1D58CC9028F97B5D0013E250 /* star.pkdrawing in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC8C28F97B5D0013E250 /* star.pkdrawing */; };
 		1D58CC9128F97B5D0013E250 /* square.pkdrawing in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC8D28F97B5D0013E250 /* square.pkdrawing */; };
@@ -43,6 +42,7 @@
 		1DCEA66729093139004E3FB9 /* MediaProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCEA66629093139004E3FB9 /* MediaProcessor.swift */; };
 		1DCEA6692909375C004E3FB9 /* AVAssetTrack+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCEA6682909375C004E3FB9 /* AVAssetTrack+Extensions.swift */; };
 		1DEAB44029104C3000768280 /* Colors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEAB43F29104C3000768280 /* Colors+Extensions.swift */; };
+		1DEAB44229111C8000768280 /* ShapesClassification.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1DEAB44129111C8000768280 /* ShapesClassification.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +69,6 @@
 		1D58CC7428F3F50E0013E250 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D58CC7728F3F50E0013E250 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1D58CC7F28F43D4A0013E250 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		1D58CC8628F82CF00013E250 /* ShapesClassification.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = ShapesClassification.mlpackage; path = CreateML/ShapesClassification.mlpackage; sourceTree = SOURCE_ROOT; };
 		1D58CC8B28F97B5D0013E250 /* circle.pkdrawing */ = {isa = PBXFileReference; lastKnownFileType = file; path = circle.pkdrawing; sourceTree = "<group>"; };
 		1D58CC8C28F97B5D0013E250 /* star.pkdrawing */ = {isa = PBXFileReference; lastKnownFileType = file; path = star.pkdrawing; sourceTree = "<group>"; };
 		1D58CC8D28F97B5D0013E250 /* square.pkdrawing */ = {isa = PBXFileReference; lastKnownFileType = file; path = square.pkdrawing; sourceTree = "<group>"; };
@@ -86,6 +85,8 @@
 		1DCEA66629093139004E3FB9 /* MediaProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaProcessor.swift; sourceTree = "<group>"; };
 		1DCEA6682909375C004E3FB9 /* AVAssetTrack+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAssetTrack+Extensions.swift"; sourceTree = "<group>"; };
 		1DEAB43F29104C3000768280 /* Colors+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extensions.swift"; sourceTree = "<group>"; };
+		1DEAB44129111C8000768280 /* ShapesClassification.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = ShapesClassification.mlpackage; sourceTree = "<group>"; };
+		1DEAB4432911241400768280 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +167,9 @@
 				1D58CC7F28F43D4A0013E250 /* Info.plist */,
 				1D58CC7428F3F50E0013E250 /* Assets.xcassets */,
 				1D56A424290BDB57005D4FB1 /* LaunchScreen.storyboard */,
-				1D58CC8628F82CF00013E250 /* ShapesClassification.mlpackage */,
+				1DEAB44129111C8000768280 /* ShapesClassification.mlpackage */,
 				1D56A42A290C0D44005D4FB1 /* duck.mp4 */,
+				1DEAB4432911241400768280 /* TODO.md */,
 				1D56A43529100800005D4FB1 /* fonts */,
 				1D58CC8A28F97B440013E250 /* shapes */,
 				1D58CC7628F3F50E0013E250 /* Preview Content */,
@@ -295,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEAB44229111C8000768280 /* ShapesClassification.mlpackage in Sources */,
 				1D56A430290FDADB005D4FB1 /* ImageView.swift in Sources */,
 				1DCEA65C2906B14E004E3FB9 /* FontSlider.swift in Sources */,
 				1DCEA6692909375C004E3FB9 /* AVAssetTrack+Extensions.swift in Sources */,
@@ -304,7 +307,6 @@
 				1DCEA665290876CF004E3FB9 /* PlayerView.swift in Sources */,
 				1DCEA65729033BC7004E3FB9 /* UIResponder+Extensions.swift in Sources */,
 				1D56A427290BE591005D4FB1 /* PermissionsView.swift in Sources */,
-				1D58CC8728F82CF00013E250 /* ShapesClassification.mlpackage in Sources */,
 				1D56A432290FDAF6005D4FB1 /* UIImageView+Extensions.swift in Sources */,
 				1D31D2BA2900299C005FDADB /* CanvasView.swift in Sources */,
 				1D58CC7128F3F50D0013E250 /* HandDrawnApp.swift in Sources */,
