@@ -21,12 +21,8 @@ struct PermissionsView: View {
         switch PHPhotoLibrary.authorizationStatus() {
         case .notDetermined:
             return nil
-        case .authorized:
+        case .authorized, .limited:
             return true
-        #if swift(>=5.3)
-        case .limited:
-            return true
-        #endif
         case .denied, .restricted:
             return false
         @unknown default:
@@ -58,14 +54,9 @@ struct PermissionsView: View {
                             isPickerPresented = true
                         } else if self.status == nil {
                             PHPhotoLibrary.requestAuthorization { status in
-                                if status == .authorized {
+                                if status == .authorized || status == .limited {
                                     self.status = true
                                     return
-                                } else if #available(iOS 14.0, *) {
-                                    if status == .limited {
-                                        self.status = true
-                                        return
-                                    }
                                 }
                                 
                                 self.status = false
@@ -73,13 +64,11 @@ struct PermissionsView: View {
                         }
                     }, label: {
                         // Permissions button
-                        ZStack {
+                        Group {
                             if !isPickerPresented {
                                 Text(self.status == true ? "Continue" : "Grant Permissions")
                             } else {
-                                ActivityIndicator(isAnimating: isPickerPresented).configure {
-                                    $0.color = .light
-                                }
+                                ProgressView().foregroundColor(.light)
                             }
                         }
                         .fixedSize()
@@ -91,14 +80,6 @@ struct PermissionsView: View {
                         .foregroundColor(.light)
                     })
                     .disabled(self.status == false)
-                    .sheet(isPresented: $isPickerPresented) { // small delay on first load - but fullScreenCover has different style (and iOS 14+)
-                        // also possible to display as fullscreen view
-                        ImagePicker(didFinishSelection: { media in
-                            selectedItem = media
-                            isPickerPresented = false
-                        })
-                        .edgesIgnoringSafeArea(.all)
-                    }
                 }
                 
                 // Editor overlay
@@ -111,6 +92,14 @@ struct PermissionsView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .sheet(isPresented: $isPickerPresented) {
+            // TODO: small delay on first load on real device
+            ImagePicker(didFinishSelection: { media in
+                selectedItem = media
+                isPickerPresented = false
+            })
+            .edgesIgnoringSafeArea(.all)
+        }
     }
 }
 

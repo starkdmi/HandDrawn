@@ -18,7 +18,6 @@
 		1D56A425290BDB58005D4FB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D56A424290BDB57005D4FB1 /* LaunchScreen.storyboard */; };
 		1D56A427290BE591005D4FB1 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D56A426290BE591005D4FB1 /* PermissionsView.swift */; };
 		1D56A42B290C0D44005D4FB1 /* duck.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1D56A42A290C0D44005D4FB1 /* duck.mp4 */; };
-		1D56A42D290C65FE005D4FB1 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D56A42C290C65FE005D4FB1 /* ActivityIndicator.swift */; };
 		1D56A430290FDADB005D4FB1 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D56A42F290FDADB005D4FB1 /* ImageView.swift */; };
 		1D56A432290FDAF6005D4FB1 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D56A431290FDAF6005D4FB1 /* UIImageView+Extensions.swift */; };
 		1D56A434291007F8005D4FB1 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D56A433291007F8005D4FB1 /* Montserrat.ttf */; };
@@ -26,10 +25,6 @@
 		1D58CC7128F3F50D0013E250 /* HandDrawnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D58CC7028F3F50D0013E250 /* HandDrawnApp.swift */; };
 		1D58CC7528F3F50E0013E250 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC7428F3F50E0013E250 /* Assets.xcassets */; };
 		1D58CC7828F3F50E0013E250 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC7728F3F50E0013E250 /* Preview Assets.xcassets */; };
-		1D58CC8F28F97B5D0013E250 /* circle.pkdrawing in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC8B28F97B5D0013E250 /* circle.pkdrawing */; };
-		1D58CC9028F97B5D0013E250 /* star.pkdrawing in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC8C28F97B5D0013E250 /* star.pkdrawing */; };
-		1D58CC9128F97B5D0013E250 /* square.pkdrawing in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC8D28F97B5D0013E250 /* square.pkdrawing */; };
-		1D58CC9228F97B5D0013E250 /* triangle.pkdrawing in Resources */ = {isa = PBXBuildFile; fileRef = 1D58CC8E28F97B5D0013E250 /* triangle.pkdrawing */; };
 		1DCEA6422901E68E004E3FB9 /* PKDrawing+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCEA6412901E68E004E3FB9 /* PKDrawing+Extensions.swift */; };
 		1DCEA6442901EBEB004E3FB9 /* PKCanvasView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCEA6432901EBEB004E3FB9 /* PKCanvasView+Extensions.swift */; };
 		1DCEA6462902EDAA004E3FB9 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCEA6452902EDAA004E3FB9 /* View+Extensions.swift */; };
@@ -57,7 +52,6 @@
 		1D56A424290BDB57005D4FB1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D56A426290BE591005D4FB1 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		1D56A42A290C0D44005D4FB1 /* duck.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = duck.mp4; sourceTree = "<group>"; };
-		1D56A42C290C65FE005D4FB1 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		1D56A42F290FDADB005D4FB1 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		1D56A431290FDAF6005D4FB1 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		1D56A433291007F8005D4FB1 /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
@@ -69,10 +63,6 @@
 		1D58CC7428F3F50E0013E250 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D58CC7728F3F50E0013E250 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1D58CC7F28F43D4A0013E250 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		1D58CC8B28F97B5D0013E250 /* circle.pkdrawing */ = {isa = PBXFileReference; lastKnownFileType = file; path = circle.pkdrawing; sourceTree = "<group>"; };
-		1D58CC8C28F97B5D0013E250 /* star.pkdrawing */ = {isa = PBXFileReference; lastKnownFileType = file; path = star.pkdrawing; sourceTree = "<group>"; };
-		1D58CC8D28F97B5D0013E250 /* square.pkdrawing */ = {isa = PBXFileReference; lastKnownFileType = file; path = square.pkdrawing; sourceTree = "<group>"; };
-		1D58CC8E28F97B5D0013E250 /* triangle.pkdrawing */ = {isa = PBXFileReference; lastKnownFileType = file; path = triangle.pkdrawing; sourceTree = "<group>"; };
 		1DCEA6412901E68E004E3FB9 /* PKDrawing+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKDrawing+Extensions.swift"; sourceTree = "<group>"; };
 		1DCEA6432901EBEB004E3FB9 /* PKCanvasView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKCanvasView+Extensions.swift"; sourceTree = "<group>"; };
 		1DCEA6452902EDAA004E3FB9 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -171,7 +161,6 @@
 				1D56A42A290C0D44005D4FB1 /* duck.mp4 */,
 				1DEAB4432911241400768280 /* TODO.md */,
 				1D56A43529100800005D4FB1 /* fonts */,
-				1D58CC8A28F97B440013E250 /* shapes */,
 				1D58CC7628F3F50E0013E250 /* Preview Content */,
 			);
 			path = HandDrawn;
@@ -185,17 +174,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		1D58CC8A28F97B440013E250 /* shapes */ = {
-			isa = PBXGroup;
-			children = (
-				1D58CC8B28F97B5D0013E250 /* circle.pkdrawing */,
-				1D58CC8D28F97B5D0013E250 /* square.pkdrawing */,
-				1D58CC8C28F97B5D0013E250 /* star.pkdrawing */,
-				1D58CC8E28F97B5D0013E250 /* triangle.pkdrawing */,
-			);
-			path = shapes;
-			sourceTree = "<group>";
-		};
 		1DCEA65829033C0C004E3FB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +183,6 @@
 				1DCEA65D2906E28A004E3FB9 /* TextLabel.swift */,
 				1DCEA664290876CF004E3FB9 /* PlayerView.swift */,
 				1D4C64922909726F00C6C023 /* ImagePicker.swift */,
-				1D56A42C290C65FE005D4FB1 /* ActivityIndicator.swift */,
 				1D56A42F290FDADB005D4FB1 /* ImageView.swift */,
 			);
 			path = Views;
@@ -277,14 +254,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D58CC9128F97B5D0013E250 /* square.pkdrawing in Resources */,
 				1D56A425290BDB58005D4FB1 /* LaunchScreen.storyboard in Resources */,
 				1D58CC7828F3F50E0013E250 /* Preview Assets.xcassets in Resources */,
-				1D58CC9028F97B5D0013E250 /* star.pkdrawing in Resources */,
-				1D58CC8F28F97B5D0013E250 /* circle.pkdrawing in Resources */,
 				1D58CC7528F3F50E0013E250 /* Assets.xcassets in Resources */,
 				1D56A42B290C0D44005D4FB1 /* duck.mp4 in Resources */,
-				1D58CC9228F97B5D0013E250 /* triangle.pkdrawing in Resources */,
 				1D56A434291007F8005D4FB1 /* Montserrat.ttf in Resources */,
 				1D56A43B29100DD0005D4FB1 /* Pacifico.ttf in Resources */,
 			);
@@ -313,7 +286,6 @@
 				1DCEA6442901EBEB004E3FB9 /* PKCanvasView+Extensions.swift in Sources */,
 				1D31D2B82900297B005FDADB /* MLCanvas.swift in Sources */,
 				1D3701F229008F7F00E5B60B /* EditorView.swift in Sources */,
-				1D56A42D290C65FE005D4FB1 /* ActivityIndicator.swift in Sources */,
 				1DCEA6422901E68E004E3FB9 /* PKDrawing+Extensions.swift in Sources */,
 				1DCEA6462902EDAA004E3FB9 /* View+Extensions.swift in Sources */,
 				1D3701F029008DBA00E5B60B /* Image+Extensions.swift in Sources */,
@@ -379,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -433,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -463,12 +435,12 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.starkdmi.HandDrawn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -500,12 +472,12 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.starkdmi.HandDrawn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

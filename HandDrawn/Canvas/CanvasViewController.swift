@@ -15,7 +15,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
     var shouldBecameFirstResponder: Bool = true
     
     /// Attached tool picker
-    var toolPicker: PKToolPicker?
+    var toolPicker = PKToolPicker()
     
     /// Currently active subview
     var highlightedSubview: UIView?
@@ -34,6 +34,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         super.init(coder: coder)
     }
     
+    /// Insert canvas view
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(canvas)
@@ -47,25 +48,18 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         ])
         
         canvas.delegate = self
-        
-        if #available(iOS 14.0, *) {
-            canvas.drawingPolicy = .anyInput
-        }
+        canvas.drawingPolicy = .anyInput
     }
  
+    /// Setup tool picker and became first responder
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                         
-        if let window = view.window, let toolPicker = PKToolPicker.shared(for: window) {
-            toolPicker.setVisible(true, forFirstResponder: canvas)
-            toolPicker.addObserver(canvas)
-            toolPicker.selectedTool = PKInkingTool(.pen, color: .white, width: 5) // default tool
-            toolPicker.overrideUserInterfaceStyle = .dark
-            toolPicker.colorUserInterfaceStyle = .dark // required for correct black and white colors in different system modes
-            self.toolPicker = toolPicker
-        } else {
-            print("No UIWindow found - PKToolPicker was not initialized")
-        }
+        
+        toolPicker.setVisible(true, forFirstResponder: canvas)
+        toolPicker.addObserver(canvas)
+        toolPicker.selectedTool = PKInkingTool(.pen, color: .white, width: 5) // default tool
+        toolPicker.overrideUserInterfaceStyle = .dark
+        toolPicker.colorUserInterfaceStyle = .dark // required for correct black and white colors in different system modes
         
         if (shouldBecameFirstResponder) {
             // https://developer.apple.com/forums/thread/661607
@@ -75,6 +69,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         }
     }
         
+    /// Nofity the subscriber and process the drawing via ML if needed
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         onChanged?(canvasView.drawing)
         
@@ -102,9 +97,9 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
     
     // MARK: UIView subviews gestures
     
+    /// Register all the gestures needed for text subview manipulation
     func registerGestures(for view: UIView) {
         view.center = view.center
-        // view.isUserInteractionEnabled = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.numberOfTapsRequired = 1
@@ -134,17 +129,20 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         view.addGestureRecognizer(rotate)
     }
     
+    /// Detect if touched outside of selected text view
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         maybeDeselectSubview(view, touches: touches)
     }
     
+    /// Detect if touched on a new text view
     @objc func handleTap(_ tap: UITapGestureRecognizer?) {
         guard selectionEnabled else { return }
         guard let view = tap?.view else { return }
         selectSubview(view)
     }
     
+    /// Enter tex editing mode if tapped on text view
     @objc func handleDoubleTap(_ doubleTap: UITapGestureRecognizer?) {
         guard selectionEnabled else { return }
         guard let view = doubleTap?.view as? UILabel else { return }
@@ -152,6 +150,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         editTextView(view)
     }
         
+    /// Show context menu for tapped text view
     @objc func handleLongPress(_ recognizer: UIGestureRecognizer) {
         guard selectionEnabled else { return }
         if let view = recognizer.view, let superview = view.superview {
@@ -170,6 +169,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         }
     }
     
+    /// Menu item - show text editing alert view
     @objc func editView(sender: UIMenuController) {
         guard let view = self.view.subviews.first(where: {
             $0.accessibilityIdentifier == sender.accessibilityHint
@@ -177,6 +177,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         editTextView(label)
     }
     
+    /// Menu item - duplicate current text view
     @objc func duplicateView(sender: UIMenuController) {
         guard let label = self.view.subviews.first(where: {
             $0.accessibilityIdentifier == sender.accessibilityHint
@@ -210,6 +211,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         })
     }
 
+    /// Menu item - delete selected text view
     @objc func deleteView(sender: UIMenuController) {
         guard let label = self.view.subviews.first(where: {
             $0.accessibilityIdentifier == sender.accessibilityHint
@@ -223,6 +225,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         })
     }
     
+    /// Text view moving gesture
     @objc func handlePan(_ pan: UIPanGestureRecognizer) {
         /*if (pan.state == .began || pan.state == .changed) {
             guard let view = pan.view else { return }
@@ -283,6 +286,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         }
     }
 
+    /// Text view scalling gesture
     @objc func handlePinch(_ pinch: UIPinchGestureRecognizer) {
 
         // TODO: font of UILabel may be scalled using https://stackoverflow.com/a/54232901
@@ -294,12 +298,14 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         pinch.scale = 1
     }
 
+    /// Text view rotating gesture
     @objc func handleRotate(_ rotate: UIRotationGestureRecognizer) {
         guard let view = rotate.view else { return }
         view.transform = view.transform.rotated(by: rotate.rotation)
         rotate.rotation = 0
     }
-        
+       
+    /// Allow multiple gestures to be invoked in same time
     func gestureRecognizer(_: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith shouldRecognizeSimultaneouslyWithGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -308,6 +314,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         return true
     }
     
+    /// Selected passed view - will highlight with the blue border
     func selectSubview(_ view: UIView) {
         guard selectionEnabled else { return }
         
@@ -332,6 +339,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         self.view.bringSubviewToFront(view)
     }
     
+    /// Deselect text view if all the touches are outside its bounds
     func maybeDeselectSubview(_ view: UIView, touches: Set<UITouch>) {
         guard let view = highlightedSubview else { return }
         
@@ -343,6 +351,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         }
     }
     
+    /// Deselect passed text view - will revert border and style back
     func deselectSubview(_ view: UIView) {
         // print("deselect \(view.accessibilityIdentifier!)")
         // view.layer.borderColor = UIColor.black.cgColor
@@ -355,6 +364,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         onSelectionChanged?(nil)
     }
     
+    /// Shortcut to show text eding dialog
     func editTextView(_ view: UILabel) {
         self.showTextAlert(title: "Edit", subtitle: "Edit your text", text: view.text, actionTitle: "Save") { text in
             view.text = text
@@ -365,6 +375,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
     
     // MARK: Alert Text View
     
+    /// Present add/edit text view dialog
     func showTextAlert(title: String, subtitle: String?, text: String?, actionTitle: String, onSubmit: ((String) -> Void)?) {
         let alert = UIAlertController(title: title, message: "\(subtitle ?? "")\n\n\n\n\n\n\n\n", preferredStyle: .alert)
         alert.view.autoresizesSubviews = true
@@ -412,6 +423,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         present(alert, animated: true)
     }
     
+    /// Placeholder related method
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
@@ -420,6 +432,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
         }
     }
     
+    /// Placeholder related method
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Aa.."

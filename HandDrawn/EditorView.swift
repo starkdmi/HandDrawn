@@ -146,7 +146,7 @@ struct EditorView: View {
                             .labelsHidden()
                             .frame(width: UIScreen.main.bounds.width, height: 56).clipped()
                             .frame(width: 128, height: 32).clipped()
-                            .stateChange(value: font, onChange: onFontChanged)
+                            .onChange(of: font, perform: onFontChanged)
                         }
                     }
 
@@ -209,7 +209,7 @@ struct EditorView: View {
                     let frame = geometry.frame(in: .local)
                     let size = calculateCanvasSize(bounds: geometry.size)
                                         
-                    ZStack {
+                    Group {
                         if media.type == .video {
                             // Video player
                             PlayerView(asset: media.video!, size: $mediaSize)
@@ -223,7 +223,7 @@ struct EditorView: View {
                                     set: { _ in }
                                 )
                             )
-                            .stateChange(value: media) { media in
+                            .onChange(of: media) { media in
                                 // get image size for .fit content mode
                                 calculateImageSize(frame)
                             }
@@ -272,7 +272,7 @@ struct EditorView: View {
                             Text("Text").tag(DrawingMode.text)
                         }
                         .pickerStyle(.segmented)
-                        .stateChange(value: mode, onChange: modeChanged)
+                        .onChange(of: mode, perform: modeChanged)
                         
                         // Shapes button
                         if (mode == .draw) {
@@ -305,9 +305,7 @@ struct EditorView: View {
                             CircleIcon(systemName: "arrow.down", disabled: !canUndo, hidden: isProcesing)
                                 .padding(.all, 4)
                                 .overlay(
-                                    ActivityIndicator(isAnimating: isProcesing).configure {
-                                        $0.color = .light
-                                    }
+                                    isProcesing ? ProgressView().foregroundColor(.light) : nil
                                 )
                         }.disabled(!canUndo)
                     }
@@ -353,8 +351,9 @@ struct EditorView: View {
                                             progress: $fontSize,
                                             foregroundColor: .light,
                                             backgroundColor: .darkHighlight
-                                        ).frame(height: 36)
-                                            .stateChange(value: fontSize, onChange: onFontSizeChanged)
+                                        )
+                                        .frame(height: 36)
+                                        .onChange(of: fontSize, perform: onFontSizeChanged)
                                         
                                         Spacer()
                                         
@@ -436,16 +435,9 @@ struct EditorView: View {
 
         let labels: [UIView] = canvasController?.view.subviews.filter { $0 is UILabel } ?? []
         
-        if #available(iOS 14.0, *) {
-            if (canvas.drawing.strokes.isEmpty && labels.isEmpty) {
-                // empty canvas
-                return
-            }
-        } else {
-            if (canvas.drawing.bounds.isEmpty && labels.isEmpty) {
-                // empty canvas
-                return
-            }
+        if ((canvas.drawing.strokes.isEmpty || canvas.drawing.bounds.isEmpty) && labels.isEmpty) {
+            // empty canvas
+            return
         }
         
         canvas.drawing = PKDrawing()
@@ -501,19 +493,12 @@ struct EditorView: View {
     func clearAll() {
         let labels: [UIView] = canvasController?.view.subviews.filter { $0 is UILabel } ?? []
         
-        if #available(iOS 14.0, *) {
-            if (canvas.drawing.strokes.isEmpty && labels.isEmpty) {
-                // empty canvas
-                return
-            }
-        } else {
-            if (canvas.drawing.bounds.isEmpty && labels.isEmpty) {
-                // empty canvas
-                return
-            }
+        if ((canvas.drawing.strokes.isEmpty || canvas.drawing.bounds.isEmpty) && labels.isEmpty) {
+            // empty canvas
+            return
         }
         
-        // MARK: AS UNDO FOR CLEAR ALL IS NOT REQUIRED - COMMENT CODE HERE FOR DISABLING
+        // MARK: Coment code behind to also clear the undo action of clearing all
         let original = canvas.drawing
         canvas.undoManager?.registerUndo(withTarget: canvas, handler: {
             $0.drawing = original

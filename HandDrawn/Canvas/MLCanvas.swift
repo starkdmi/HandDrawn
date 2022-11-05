@@ -106,8 +106,7 @@ class MLCanvas: PKCanvasView {
     }
         
     /// Draw Ideal shape using user's drawing and bounds
-    /// On iOS 13 - predefined PKDrawing data (from iOS 14 app) and scale (transformed)
-    /// On iOS 14 - use PKStroke to draw perfect shapes with current tool, brush size and color
+    /// Uses PKStroke to draw perfect shapes with current tool, brush size and color
     func drawPrefectShape(_ shape: DrawingShape) {
         var transformed: PKDrawing?
         
