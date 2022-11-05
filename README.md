@@ -8,7 +8,7 @@
 | ![Drawing on image](https://user-images.githubusercontent.com/21260939/200125453-4a607f35-a164-4e33-9276-d7999f1625cd.png) | ![Adding text to an image](https://user-images.githubusercontent.com/21260939/200125459-92bb422c-5159-49ad-8aca-1d6d1fef427c.png) |
 
 ## Requirements
-Minimal OS version required to run application is iOS 13.
+Minimal OS version required to run the application is iOS 14. For iOS 13 check out the separate [branch](../../tree/iOS13)
 
 ## Build
-Project created in Xcode Version 14.0 and macOS 12.6 with no 3rd party libraries. 
+Project created in Xcode Version 14.0 and macOS 12.6 without 3rd party libraries
