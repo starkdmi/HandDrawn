@@ -15,7 +15,7 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
     var shouldBecameFirstResponder: Bool = true
     
     /// Attached tool picker
-    var toolPicker = PKToolPicker()
+    var toolPicker: PKToolPicker?
     
     /// Currently active subview
     var highlightedSubview: UIView?
@@ -55,11 +55,15 @@ class CanvasViewController<T: PKCanvasView>: UIViewController, PKToolPickerObser
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        toolPicker.setVisible(true, forFirstResponder: canvas)
-        toolPicker.addObserver(canvas)
-        toolPicker.selectedTool = PKInkingTool(.pen, color: .white, width: 5) // default tool
-        toolPicker.overrideUserInterfaceStyle = .dark
-        toolPicker.colorUserInterfaceStyle = .dark // required for correct black and white colors in different system modes
+        if (canvas is Canvas) {
+            let toolPicker = PKToolPicker()
+            toolPicker.setVisible(true, forFirstResponder: canvas)
+            toolPicker.addObserver(canvas)
+            toolPicker.selectedTool = PKInkingTool(.pen, color: .white, width: 5) // default tool
+            toolPicker.overrideUserInterfaceStyle = .dark
+            toolPicker.colorUserInterfaceStyle = .dark // required for correct black and white colors in different system modes
+            self.toolPicker = toolPicker
+        }
         
         if (shouldBecameFirstResponder) {
             // https://developer.apple.com/forums/thread/661607

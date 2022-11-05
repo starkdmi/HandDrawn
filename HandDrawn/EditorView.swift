@@ -428,6 +428,9 @@ struct EditorView: View {
         mode = .draw
         
         toolPicker?.isRulerActive = false
+        toolPicker?.setVisible(false, forFirstResponder: canvas)
+        canvas.isUserInteractionEnabled = false
+        mlCanvas.isUserInteractionEnabled = false
         
         contentMode = .fit
         isTextVisible = true
