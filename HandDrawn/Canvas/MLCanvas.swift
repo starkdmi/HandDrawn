@@ -30,6 +30,11 @@ class MLCanvas: PKCanvasView {
     /// Shapes classification model
     let model: ShapesClassification? = try? ShapesClassification(configuration: MLModelConfiguration())
     
+    // TODO: Shapes classification may be improved using Google ML Kit
+    // https://developers.google.com/ml-kit/vision/digital-ink-recognition/ios
+    // ML Kit digital ink recognition supports rectangles, triangles, ellipses and arrows
+    // Model identifiers are "zxx-Zsym-x-shapes" or "zxx-Zsym-x-autodraw"
+    
     /// Current state determine the process to be executed at canvasViewDrawingDidChange()
     var state: MLCanvasState = .inactive
     
