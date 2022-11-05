@@ -13,4 +13,4 @@ Minimal OS version required to run the application is **iOS 14**.
 For **iOS 13** check out the separate [branch](../../tree/iOS13).
 
 ## Build
-Project created in Xcode Version 14.0 and macOS 12.6 without 3rd party libraries.
+Project created in Xcode version 14.0 and macOS 12.6 without 3rd party libraries.
