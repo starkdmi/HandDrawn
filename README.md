@@ -1,6 +1,6 @@
 ## About
 
-**HandDrawn** - Fully featured iOS **drawing** and **text** editor with **image** and **video** support developed for [Telegram iOS Contest 2022](https://contest.com/docs/iOS-Oct22-Round1)
+**HandDrawn** - Fully featured **drawing** and **text** editor with **image** and **video** support developed for [Telegram iOS Contest 2022](https://contest.com/docs/iOS-Oct22-Round1)
 
 ## Preview
 | Draw | Text |
