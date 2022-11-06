@@ -396,16 +396,23 @@ struct EditorView: View {
                             }
                         }
                     }
-                    /*.background(
-                        Rectangle().fill(mode == .draw ? .clear : dark).frame(height: 75.0)
-                            //.blendMode(BlendMode.color)
-                        //dark.edgesIgnoringSafeArea(.all)
-                     )*/
                     .frame(height: 75.0)
                     .animation(mode == .draw ? .easeIn(duration: 0.05).delay(mode == .text ? 0.0 : 0.4) : nil, value: mode)
                 }
             }
             .background(Color.dark.edgesIgnoringSafeArea(.all))
+            
+            // Separator similar to PKToolPicker one
+            VStack {
+                Spacer()
+                Rectangle()
+                    .fill(Color(red: 64/255, green: 64/255, blue: 67/255))
+                    .frame(height: 1)
+                    .offset(y: -34)
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .opacity(mode == .text ? 1.0 : 0.0)
+            .animation(.easeInOut(duration: 0.5))
         }
         .navigationBarHidden(true)
         .preferredColorScheme(.dark)
